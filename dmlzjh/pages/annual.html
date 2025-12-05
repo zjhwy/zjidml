@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>年度总结 - 家庭小账本</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/pages/annual.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">📅</span>
+                    <h1 class="logo-title">年度总结</h1>
+                </div>
+                <button class="close-sidebar" id="closeSidebar">×</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="../index.html" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">首页</span>
+                </a>
+                <a href="accounting.html" class="nav-item">
+                    <span class="nav-icon">💰</span>
+                    <span class="nav-text">家庭记账</span>
+                </a>
+                <a href="annual.html" class="nav-item active">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">年度总结</span>
+                </a>
+                <a href="longdistance.html" class="nav-item">
+                    <span class="nav-icon">💕</span>
+                    <span class="nav-text">异地相思馆</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn-secondary" id="syncBtn">
+                    <span class="btn-icon">☁️</span>
+                    <span>同步数据</span>
+                </button>
+                <a href="settings.html" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">设置</span>
+                </a>
+            </div>
+        </aside>
+
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <main class="main-content annual-page">
+            <header class="top-header annual-header">
+                <button class="menu-toggle" id="menuToggle">☰</button>
+                <div class="header-title-group">
+                    <span class="header-icon star-twinkle">🌟</span>
+                    <h2 class="page-title gradient-text">2024我们的回忆</h2>
+                </div>
+                <button class="header-action" id="shareBtn">💌</button>
+            </header>
+
+            <section class="annual-cover">
+                <div class="cover-illustration">💑</div>
+                <h1 class="cover-title gradient-text">2024我们的小回忆</h1>
+                <p class="cover-text">与Ta的第365次心动</p>
+            </section>
+
+            <section class="annual-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-title">年度总收支</div>
+                    <div class="stat-value" id="annualAmount">¥0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📷</div>
+                    <div class="stat-title">照片总数</div>
+                    <div class="stat-value" id="annualPhotos">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📔</div>
+                    <div class="stat-title">日志篇数</div>
+                    <div class="stat-value" id="annualDiaries">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💞</div>
+                    <div class="stat-title">默契值累计</div>
+                    <div class="stat-value" id="annualMood">0</div>
+                </div>
+            </section>
+
+            <section class="annual-highlights">
+                <div class="section-header">
+                    <h3 class="section-title">回忆亮点</h3>
+                </div>
+                <div class="highlight-carousel" id="highlightCarousel">
+                    <!-- 卡片由JS生成 -->
+                </div>
+            </section>
+
+            <section class="annual-timeline">
+                <h3 class="section-title">成长记录</h3>
+                <div class="timeline" id="annualTimeline">
+                    <!-- 时间轴由JS生成 -->
+                </div>
+            </section>
+
+            <section class="annual-actions">
+                <button class="btn-primary" id="exportPdfBtn">导出PDF</button>
+                <button class="btn-secondary" id="shareMemoryBtn">分享回忆</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/pages/annual.js"></script>
+</body>
+</html>
+

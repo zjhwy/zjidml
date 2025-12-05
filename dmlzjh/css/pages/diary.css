@@ -1,0 +1,195 @@
+/**
+ * 日志页面样式
+ */
+
+.diary-header {
+    background: var(--color-light-blue);
+    border-bottom: 2px solid var(--color-sky-blue);
+}
+
+.date-nav-section {
+    padding: var(--spacing-md);
+}
+
+.date-nav {
+    display: flex;
+    gap: var(--spacing-sm);
+    overflow-x: auto;
+    padding-bottom: var(--spacing-sm);
+}
+
+.date-button {
+    min-width: 60px;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--color-light-blue);
+    background: var(--color-white);
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.date-button.today {
+    border-color: var(--color-sky-blue);
+    position: relative;
+}
+
+.date-button.today::after {
+    content: '❤';
+    position: absolute;
+    top: -10px;
+    right: -6px;
+    font-size: 12px;
+}
+
+.date-button.selected {
+    background: var(--color-sky-blue);
+    color: var(--color-white);
+    border-color: var(--color-sky-blue);
+}
+
+.diary-editor-section {
+    margin: var(--spacing-md);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.mood-selector {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.mood-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--color-light-blue);
+    background: var(--color-white);
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mood-btn.active {
+    border-color: var(--color-sky-blue);
+    background: var(--color-light-blue);
+    box-shadow: 0 0 0 3px rgba(135, 206, 250, 0.2);
+}
+
+.diary-input {
+    width: 100%;
+    min-height: 200px;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--color-light-blue);
+    background: var(--color-light-blue);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: var(--spacing-md);
+    resize: vertical;
+}
+
+.editor-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-sm);
+}
+
+.editor-btn {
+    flex: 1;
+    min-width: 120px;
+    border: 2px solid var(--color-light-blue);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    padding: var(--spacing-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.editor-btn:hover {
+    background: var(--color-light-blue);
+}
+
+.tag-list {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-md);
+}
+
+.tag-pill {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--color-light-blue);
+    color: var(--color-dark-blue);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.save-diary-btn {
+    width: 100%;
+    margin-top: var(--spacing-md);
+}
+
+.diary-history-section {
+    padding: var(--spacing-md);
+}
+
+.diary-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.diary-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    border: 2px solid var(--color-light-blue);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.diary-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.diary-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.diary-card-title {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-weight: bold;
+}
+
+.diary-card-tags {
+    display: flex;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+.diary-card-content {
+    margin-top: var(--spacing-sm);
+    color: var(--color-light-gray);
+}
+
+@media (max-width: 767px) {
+    .editor-actions {
+        flex-direction: column;
+    }
+}
+

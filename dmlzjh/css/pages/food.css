@@ -1,0 +1,383 @@
+/**
+ * 家庭选菜页面样式
+ */
+
+.food-header {
+    background: linear-gradient(135deg, #87CEFA, #A5D8FF);
+    border-bottom: 2px solid var(--color-light-blue);
+}
+
+.food-core-section,
+.dish-list-section,
+.ingredient-section,
+.purchase-section,
+.recommend-section {
+    padding: var(--spacing-md);
+}
+
+.food-core-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.food-core-card {
+    background: var(--color-white);
+    border: 2px solid var(--color-light-blue);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.food-core-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.core-icon {
+    font-size: 48px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.dish-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.dish-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-light-blue);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+/* 卡片展开时轻微放大 */
+.dish-card.expanded {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.dish-image {
+    height: 140px;
+    background-size: cover;
+    background-position: center;
+}
+
+.dish-content {
+    padding: var(--spacing-md);
+}
+
+.dish-toolbar-right {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* 推荐筛选区域 */
+.recommend-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+}
+
+.filter-group {
+    min-width: 160px;
+}
+
+.filter-group label {
+    display: block;
+    font-size: 13px;
+    color: var(--color-light-gray);
+    margin-bottom: 4px;
+}
+
+/* 菜品主信息区（点击用于展开/收起） */
+.dish-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+/* 展开区域：做法+食材+时间，默认收起，使用高度过渡实现动画 */
+.dish-extra {
+    border-top: 1px dashed var(--color-light-blue);
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.dish-card.expanded .dish-extra {
+    /* 足够容纳多行内容的高度，这里用较大的值简化处理 */
+    max-height: 300px;
+}
+
+.dish-extra-row {
+    font-size: 13px;
+    color: var(--color-light-gray);
+    margin-bottom: 4px;
+}
+
+.dish-extra-label {
+    font-weight: 600;
+    color: var(--color-dark-blue);
+    margin-right: 4px;
+}
+
+.dish-ingredients-inline {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.dish-ingredient-link {
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--color-light-blue);
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.dish-ingredient-link:hover {
+    background: var(--color-sky-blue);
+    color: var(--color-white);
+}
+
+.dish-tags {
+    display: flex;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+    margin-top: var(--spacing-xs);
+}
+
+.dish-tag {
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: var(--color-light-blue);
+    font-size: 12px;
+}
+
+.favorite-star {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* 悬浮操作工具条：收藏 / 编辑 / 删除 */
+.dish-toolbar {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dish-card:hover .dish-toolbar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dish-toolbar-btn {
+    border: none;
+    border-radius: 999px;
+    padding: 2px 6px;
+    font-size: 11px;
+    cursor: pointer;
+    background: rgba(230, 243, 255, 0.95);
+    color: var(--color-dark-blue);
+}
+
+.dish-toolbar-btn:hover {
+    background: var(--color-sky-blue);
+    color: var(--color-white);
+}
+
+.ingredient-tags {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.ingredient-pill {
+    padding: 6px 10px;
+    border-radius: var(--radius-md);
+    background: var(--color-light-blue);
+    display: grid;
+    grid-template-columns: 1.5fr 1.2fr 1.2fr auto;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.ingredient-name {
+    font-weight: 500;
+}
+
+.ingredient-meta {
+    font-size: 12px;
+    color: var(--color-light-gray);
+}
+
+.ingredient-qty {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ingredient-qty button {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-white);
+    cursor: pointer;
+}
+
+.ingredient-status-low {
+    border: 2px solid var(--color-light-red);
+    background: #FFF5F5;
+}
+
+.ingredient-actions {
+    display: flex;
+    gap: 4px;
+}
+
+.ingredient-actions button {
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 4px 6px;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.ingredient-add-purchase {
+    background: var(--color-light-pink);
+}
+
+.ingredient-edit {
+    background: var(--color-white);
+}
+
+.ingredient-delete {
+    background: #FFE6E6;
+}
+
+.recommend-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.recommend-card {
+    border: 2px solid var(--color-light-green);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.missing-ingredient {
+    color: #FF6B6B;
+    font-weight: bold;
+}
+
+.recommend-card .btn-primary {
+    width: 100%;
+    margin-top: var(--spacing-sm);
+}
+
+/* 采购清单区域 */
+.purchase-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.purchase-list {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-light-blue);
+    padding: var(--spacing-md);
+    min-height: 60px;
+}
+
+.purchase-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr auto;
+    gap: var(--spacing-sm);
+    align-items: center;
+    padding: 4px 0;
+    border-bottom: 1px dashed var(--color-light-blue);
+}
+
+.purchase-item:last-child {
+    border-bottom: none;
+}
+
+.purchase-qty input {
+    width: 70px;
+}
+
+.purchase-remove-btn {
+    border: none;
+    background: #FFE6E6;
+    border-radius: var(--radius-sm);
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* 食材弹窗图片编辑区域 */
+.image-edit-row {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.image-preview {
+    width: 120px;
+    height: 90px;
+    border-radius: var(--radius-md);
+    background: var(--color-light-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--color-light-gray);
+    overflow: hidden;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-tools {
+    flex: 1;
+    min-width: 160px;
+    font-size: 12px;
+    color: var(--color-light-gray);
+}
+
+.inline-inputs {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异地相思馆 - 家庭小账本</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/pages/longdistance.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">💕</span>
+                    <h1 class="logo-title">异地相思馆</h1>
+                </div>
+                <button class="close-sidebar" id="closeSidebar">×</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="../index.html" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">首页</span>
+                </a>
+                <a href="longdistance.html" class="nav-item active">
+                    <span class="nav-icon">💕</span>
+                    <span class="nav-text">异地相思馆</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn-secondary" id="syncBtn">
+                    <span class="btn-icon">☁️</span>
+                    <span>同步数据</span>
+                </button>
+                <a href="settings.html" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">设置</span>
+                </a>
+            </div>
+        </aside>
+
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <main class="main-content longdistance-page">
+            <header class="top-header longdistance-header">
+                <button class="menu-toggle" id="menuToggle">☰</button>
+                <div class="header-title-group">
+                    <span class="header-icon heartbeat-animation">💞</span>
+                    <h2 class="page-title">异地相思馆</h2>
+                </div>
+                <button class="header-action" id="settingsBtn">⚙️</button>
+            </header>
+
+            <section class="countdown-section">
+                <div class="countdown-card">
+                    <h3>距离下次见面还有</h3>
+                    <div class="countdown-value countdown-pulse" id="countdownValue">00 天</div>
+                    <p>期待拥抱的那一天～</p>
+                </div>
+            </section>
+
+            <section class="longdistance-core">
+                <div class="checkin-card">
+                    <h3>每日平安打卡</h3>
+                    <div class="checkin-status">
+                        <div class="checkin-item">
+                            <span>我</span>
+                            <button class="btn-primary" id="selfCheckinBtn">未打卡</button>
+                        </div>
+                        <div class="checkin-item">
+                            <span>Ta</span>
+                            <button class="btn-secondary" disabled>等待打卡</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="todo-card">
+                    <h3>异地待办</h3>
+                    <div class="todo-list" id="longdistanceTodo">
+                        <!-- 待办由JS生成 -->
+                    </div>
+                    <button class="btn-primary" id="addTodoBtn">+ 添加待办</button>
+                </div>
+            </section>
+
+            <section class="message-section">
+                <h3>思念留言</h3>
+                <textarea class="input message-input" id="messageInput" placeholder="给Ta说点悄悄话～"></textarea>
+                <button class="btn-primary" id="sendMessageBtn">发送</button>
+                <div class="message-list" id="messageList">
+                    <!-- 留言由JS生成 -->
+                </div>
+            </section>
+
+            <section class="gallery-section">
+                <h3>回忆慰藉</h3>
+                <div class="gallery-carousel" id="galleryCarousel">
+                    <!-- 照片由JS生成 -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/pages/longdistance.js"></script>
+</body>
+</html>
+

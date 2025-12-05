@@ -1,0 +1,414 @@
+/**
+ * 家庭小账本 - 动画效果文件
+ * 蓝色可爱风格动画
+ */
+
+/* ========== 基础动画 ========== */
+
+/* 点击反馈动画 */
+@keyframes clickFeedback {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.click-animation {
+    animation: clickFeedback 0.2s ease;
+}
+
+/* 旋转动画（用于加载） */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 闪烁动画（用于星星） */
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+}
+
+/* 弹出动画（弹窗从底部向上） */
+@keyframes slideUp {
+    from {
+        transform: translateY(100%) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.3s ease;
+}
+
+/* 淡入淡出动画（页面切换） */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.2s ease;
+}
+
+.fade-out {
+    animation: fadeOut 0.2s ease;
+}
+
+/* ========== 功能动画 ========== */
+
+/* 同步动画：蓝色小云朵+箭头循环 */
+@keyframes syncCloud {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.sync-animation {
+    display: inline-block;
+    animation: syncCloud 1s ease-in-out infinite;
+}
+
+/* 爱心漂浮动画（同步完成） */
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+.float-heart {
+    position: absolute;
+    animation: floatHeart 0.5s ease-out;
+    font-size: 24px;
+    pointer-events: none;
+}
+
+/* 完成动画：星星+对勾 */
+@keyframes completeStar {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) rotate(180deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+.complete-animation {
+    display: inline-block;
+    animation: completeStar 0.5s ease;
+}
+
+/* 惊喜动画：旋转的爱心+闪光 */
+@keyframes surpriseHeart {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    25% {
+        transform: scale(1.2) rotate(90deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1) rotate(180deg);
+        opacity: 1;
+    }
+    75% {
+        transform: scale(1.1) rotate(270deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+@keyframes flash {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
+
+.surprise-animation {
+    display: inline-block;
+    animation: surpriseHeart 0.8s ease, flash 0.8s ease;
+}
+
+/* 情感动画：心跳（颜色从浅蓝渐变至浅粉） */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+        color: #87CEFA;
+    }
+    25% {
+        transform: scale(1.1);
+        color: #B3E0FF;
+    }
+    50% {
+        transform: scale(1.2);
+        color: #FFE6F2;
+    }
+    75% {
+        transform: scale(1.1);
+        color: #B3E0FF;
+    }
+}
+
+.heartbeat-animation {
+    display: inline-block;
+    animation: heartbeat 0.6s ease-in-out;
+}
+
+/* ========== 家庭选菜模块专属动画 ========== */
+
+/* 随机选菜：骰子旋转 */
+@keyframes diceRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(90deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.dice-rotate {
+    animation: diceRotate 1s ease-in-out;
+}
+
+/* 食材匹配：图标向中心汇聚 */
+@keyframes converge {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(0, -20px) scale(0.8);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(0, -40px) scale(0.5);
+        opacity: 0;
+    }
+}
+
+.converge-animation {
+    animation: converge 0.5s ease-out;
+}
+
+/* 回做标记：星星缩放+闪光 */
+@keyframes starMark {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.star-mark-animation {
+    animation: starMark 0.3s ease;
+}
+
+/* 做法展示：步骤滑动 */
+@keyframes slideInStep {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.step-slide-in {
+    animation: slideInStep 0.2s ease;
+}
+
+/* ========== 通用动画类 ========== */
+
+/* 弹跳动画 */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.bounce-animation {
+    animation: bounce 0.5s ease;
+}
+
+/* 轻微旋转动画（用于图标） */
+@keyframes gentleRotate {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-5deg);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+}
+
+.gentle-rotate {
+    animation: gentleRotate 2s ease-in-out infinite;
+}
+
+/* 缩放动画 */
+@keyframes scale {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.scale-animation {
+    animation: scale 0.5s ease;
+}
+
+/* 闪烁星星动画（用于标题装饰） */
+@keyframes starTwinkle {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+    25% {
+        opacity: 0.7;
+        transform: scale(1.1) rotate(90deg);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.9) rotate(180deg);
+    }
+    75% {
+        opacity: 0.7;
+        transform: scale(1.1) rotate(270deg);
+    }
+}
+
+.star-twinkle {
+    display: inline-block;
+    animation: starTwinkle 2s ease-in-out infinite;
+}
+
+/* 心跳倒计时动画 */
+@keyframes countdownPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.countdown-pulse {
+    animation: countdownPulse 1s ease-in-out infinite;
+}
+
+/* 渐变动画（用于文字渐变效果） */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #87CEFA, #B3E0FF, #87CEFA);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient 3s linear infinite;
+}
+
+/* ========== 响应式动画调整 ========== */
+@media (max-width: 767px) {
+    /* 手机端：动画时长稍短，提升性能 */
+    .slide-up {
+        animation-duration: 0.25s;
+    }
+    
+    .fade-in,
+    .fade-out {
+        animation-duration: 0.15s;
+    }
+}
+

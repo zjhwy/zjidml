@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我们的小日志 - 家庭小账本</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/pages/diary.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">📔</span>
+                    <h1 class="logo-title">我们的小日志</h1>
+                </div>
+                <button class="close-sidebar" id="closeSidebar">×</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="../index.html" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">首页</span>
+                </a>
+                <a href="accounting.html" class="nav-item">
+                    <span class="nav-icon">💰</span>
+                    <span class="nav-text">家庭记账</span>
+                </a>
+                <a href="diary.html" class="nav-item active">
+                    <span class="nav-icon">📔</span>
+                    <span class="nav-text">我们的小日志</span>
+                </a>
+                <a href="games.html" class="nav-item">
+                    <span class="nav-icon">🎮</span>
+                    <span class="nav-text">情侣小游戏</span>
+                </a>
+                <a href="food.html" class="nav-item">
+                    <span class="nav-icon">🍽️</span>
+                    <span class="nav-text">家庭美食小管家</span>
+                </a>
+                <a href="annual.html" class="nav-item">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">年度总结</span>
+                </a>
+                <a href="longdistance.html" class="nav-item">
+                    <span class="nav-icon">💕</span>
+                    <span class="nav-text">异地相思馆</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn-secondary" id="syncBtn">
+                    <span class="btn-icon">☁️</span>
+                    <span>同步数据</span>
+                </button>
+                <a href="settings.html" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">设置</span>
+                </a>
+            </div>
+        </aside>
+
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- 主内容 -->
+        <main class="main-content">
+            <!-- 标题栏 -->
+            <header class="top-header diary-header">
+                <button class="menu-toggle" id="menuToggle" aria-label="打开侧边菜单">☰</button>
+                <div class="header-title-group">
+                    <span class="header-icon gentle-rotate">📔</span>
+                    <h2 class="page-title">我们的小日志</h2>
+                </div>
+                <button class="header-action" id="searchDiaryBtn" aria-label="搜索日志">🔍</button>
+            </header>
+
+            <!-- 日期导航 -->
+            <section class="date-nav-section">
+                <div class="date-nav" id="dateNav">
+                    <!-- 日期按钮由JS生成 -->
+                </div>
+            </section>
+
+            <!-- 日志编辑区 -->
+            <section class="diary-editor-section" aria-label="日志编辑区域">
+                <div class="mood-selector" id="moodSelector">
+                    <!-- 心情按钮由JS生成 -->
+                </div>
+                <label for="diaryContent" class="visually-hidden">日志内容</label>
+                <textarea class="diary-input" id="diaryContent" placeholder="今天发生了什么有趣的事情呢？"></textarea>
+                <div class="editor-actions">
+                    <button class="editor-btn" id="addPhotoBtn">📷 插入照片</button>
+                    <button class="editor-btn" id="recordVoiceBtn">🎤 语音录制</button>
+                    <button class="editor-btn" id="addTagBtn">🏷️ 添加标签</button>
+                </div>
+                <div class="tag-list" id="tagList">
+                    <!-- 标签展示区域 -->
+                </div>
+                <button class="btn-primary save-diary-btn" id="saveDiaryBtn">保存日志</button>
+            </section>
+
+            <!-- 历史日志 -->
+            <section class="diary-history-section">
+                <h3 class="section-title">历史日志</h3>
+                <div class="diary-list" id="diaryList">
+                    <!-- 历史日志列表由JS生成 -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/pages/diary.js"></script>
+</body>
+</html>
+

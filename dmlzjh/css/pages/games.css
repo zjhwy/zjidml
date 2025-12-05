@@ -1,0 +1,93 @@
+/**
+ * 情侣小游戏页面样式
+ */
+
+.games-header {
+    background: linear-gradient(135deg, var(--color-sky-blue), #6EC1FF);
+    border-bottom: 2px solid var(--color-light-blue);
+    color: var(--color-white);
+}
+
+.game-selection-section,
+.game-play-section,
+.game-stats-section {
+    padding: var(--spacing-md);
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.game-card {
+    background: var(--color-white);
+    border: 2px solid var(--color-light-blue);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-color: var(--color-sky-blue);
+}
+
+.game-icon {
+    font-size: 48px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.game-title {
+    font-weight: bold;
+    margin-bottom: var(--spacing-xs);
+}
+
+.game-desc {
+    font-size: 14px;
+    color: var(--color-light-gray);
+    margin-bottom: var(--spacing-sm);
+}
+
+.game-play-section {
+    min-height: 300px;
+}
+
+.game-play-container {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-light-blue);
+    padding: var(--spacing-lg);
+}
+
+.game-stats-card {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-light-blue);
+    padding: var(--spacing-md);
+}
+
+.stat-item {
+    flex: 1;
+    text-align: center;
+}
+
+.records-panel {
+    margin-top: var(--spacing-md);
+    background: var(--color-light-blue);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    display: none;
+}
+
+.records-panel.show {
+    display: block;
+    animation: slideUp 0.3s ease;
+}
+

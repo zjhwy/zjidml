@@ -1,0 +1,86 @@
+/**
+ * 年度总结页面样式
+ */
+
+.annual-header {
+    background: linear-gradient(135deg, #5CB5FF, #A6C8FF);
+}
+
+.annual-page {
+    background: radial-gradient(circle at top, #E6F3FF, #FFFFFF);
+}
+
+.annual-cover {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: linear-gradient(135deg, #87CEFA, #B3E0FF);
+    color: var(--color-white);
+}
+
+.annual-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+}
+
+.stat-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    border: 2px solid var(--color-light-blue);
+}
+
+.highlight-carousel {
+    display: flex;
+    gap: var(--spacing-md);
+    overflow-x: auto;
+    padding-bottom: var(--spacing-sm);
+}
+
+.highlight-card {
+    min-width: 240px;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-light-blue);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.annual-timeline {
+    padding: var(--spacing-md);
+}
+
+.timeline {
+    position: relative;
+    padding-left: var(--spacing-xl);
+    border-left: 2px dashed var(--color-sky-blue);
+}
+
+.timeline-item {
+    position: relative;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--color-light-blue);
+}
+
+.timeline-item::before {
+    content: '❤';
+    position: absolute;
+    left: -35px;
+    top: 16px;
+    background: var(--color-white);
+    border-radius: 50%;
+    padding: 4px;
+    border: 2px solid var(--color-sky-blue);
+}
+
+.annual-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+}
+

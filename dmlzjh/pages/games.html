@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情侣小游戏 - 家庭小账本</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/pages/games.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">🎮</span>
+                    <h1 class="logo-title">情侣小游戏</h1>
+                </div>
+                <button class="close-sidebar" id="closeSidebar">×</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="../index.html" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">首页</span>
+                </a>
+                <a href="games.html" class="nav-item active">
+                    <span class="nav-icon">🎮</span>
+                    <span class="nav-text">情侣小游戏</span>
+                </a>
+                <a href="accounting.html" class="nav-item">
+                    <span class="nav-icon">💰</span>
+                    <span class="nav-text">家庭记账</span>
+                </a>
+                <a href="diary.html" class="nav-item">
+                    <span class="nav-icon">📔</span>
+                    <span class="nav-text">我们的小日志</span>
+                </a>
+                <a href="food.html" class="nav-item">
+                    <span class="nav-icon">🍽️</span>
+                    <span class="nav-text">家庭美食小管家</span>
+                </a>
+                <a href="annual.html" class="nav-item">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">年度总结</span>
+                </a>
+                <a href="longdistance.html" class="nav-item">
+                    <span class="nav-icon">💕</span>
+                    <span class="nav-text">异地相思馆</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn-secondary" id="syncBtn">
+                    <span class="btn-icon">☁️</span>
+                    <span>同步数据</span>
+                </button>
+                <a href="settings.html" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">设置</span>
+                </a>
+            </div>
+        </aside>
+
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <main class="main-content">
+            <header class="top-header games-header">
+                <button class="menu-toggle" id="menuToggle">☰</button>
+                <div class="header-title-group">
+                    <span class="header-icon star-twinkle">🎮</span>
+                    <h2 class="page-title">情侣小游戏</h2>
+                </div>
+                <button class="header-action" id="statsBtn">🏆</button>
+            </header>
+
+            <section class="game-selection-section">
+                <div class="game-grid" id="gameGrid">
+                    <!-- 游戏卡片由JS生成 -->
+                </div>
+            </section>
+
+            <section class="game-play-section">
+                <div class="game-play-container" id="gamePlayContainer">
+                    <!-- 当前游戏内容由JS生成 -->
+                </div>
+            </section>
+
+            <section class="game-stats-section">
+                <div class="game-stats-card">
+                    <div class="stat-item">
+                        <span class="stat-label">当前胜率</span>
+                        <span class="stat-value" id="winRate">0%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">累计勋章</span>
+                        <span class="stat-value" id="medalCount">0</span>
+                    </div>
+                    <button class="btn-primary" id="viewRecordsBtn">展开战绩</button>
+                </div>
+                <div class="records-panel" id="recordsPanel">
+                    <!-- 战绩明细由JS生成 -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/pages/games.js"></script>
+</body>
+</html>
+

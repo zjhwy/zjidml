@@ -1,0 +1,593 @@
+/**
+ * 家庭记账页面样式
+ */
+
+/* ========== 记账页面标题栏 ========== */
+.accounting-header {
+    background: linear-gradient(135deg, var(--color-sky-blue) 0%, var(--color-gradient-blue) 100%);
+}
+
+.header-title-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex: 1;
+}
+
+.header-icon {
+    font-size: 24px;
+    animation: gentleRotate 3s ease-in-out infinite;
+}
+
+/* ========== 快捷录入区 ========== */
+.quick-entry-section {
+    background: var(--color-white);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-md);
+    border-radius: var(--radius-md);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.btn-add-entry {
+    background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    min-height: 44px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.btn-add-entry:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-add-entry:active {
+    transform: scale(0.95);
+}
+
+.btn-add-icon {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.quick-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.quick-btn {
+    background: var(--color-light-blue);
+    border: 2px solid var(--color-sky-blue);
+    border-radius: 50px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 14px;
+    color: var(--color-dark-blue);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 44px;
+    min-width: 80px;
+}
+
+.quick-btn:hover {
+    background: var(--color-sky-blue);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+.quick-btn:active {
+    transform: scale(0.95);
+}
+
+/* ========== 统计视图区 ========== */
+.stats-section {
+    padding: var(--spacing-md);
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+@media (max-width: 767px) {
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.chart-container {
+    background: var(--color-white);
+    border: 2px solid var(--color-light-blue);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--color-dark-blue);
+    margin-bottom: var(--spacing-md);
+    text-shadow: 1px 1px 2px var(--shadow-blue);
+}
+
+.monthly-stats-card {
+    background: var(--color-white);
+    border: 2px solid var(--color-light-blue);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.monthly-stats {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.monthly-stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    background: var(--color-light-blue);
+    border-radius: var(--radius-sm);
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--color-light-gray);
+}
+
+.stat-value {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: var(--font-english);
+}
+
+.stat-value.income {
+    color: #4CAF50;
+}
+
+.stat-value.expense {
+    color: #F44336;
+}
+
+.stat-value.balance {
+    color: var(--color-dark-blue);
+}
+
+/* ========== 收支明细区 ========== */
+.entries-section {
+    padding: var(--spacing-md);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.filter-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.filter-btn {
+    background: var(--color-white);
+    border: 2px solid var(--color-light-blue);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 14px;
+    color: var(--color-dark-blue);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 36px;
+}
+
+.filter-btn:hover {
+    background: var(--color-light-blue);
+}
+
+.filter-btn.active {
+    background: var(--color-sky-blue);
+    color: var(--color-white);
+    border-color: var(--color-sky-blue);
+}
+
+.entries-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.entry-item {
+    background: var(--color-white);
+    border: 2px solid var(--color-light-blue);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.entry-item:nth-child(odd) {
+    background: var(--color-light-blue);
+}
+
+.entry-item:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform: translateX(4px);
+}
+
+.entry-icon {
+    font-size: 32px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-white);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.entry-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.entry-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-dark-blue);
+    margin-bottom: var(--spacing-xs);
+}
+
+.entry-meta {
+    display: flex;
+    gap: var(--spacing-md);
+    font-size: 12px;
+    color: var(--color-light-gray);
+    flex-wrap: wrap;
+}
+
+.entry-amount {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: var(--font-english);
+    color: var(--color-dark-blue);
+    flex-shrink: 0;
+}
+
+.entry-amount.income {
+    color: #4CAF50;
+}
+
+.entry-amount.expense {
+    color: #F44336;
+}
+
+.entry-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.entry-item:hover .entry-actions {
+    opacity: 1;
+}
+
+.entry-action-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    min-width: 32px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 手机端：左滑显示操作按钮 */
+@media (max-width: 767px) {
+    .entry-item {
+        touch-action: pan-y;
+    }
+    
+    .entry-actions {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: var(--color-white);
+        padding: 0 var(--spacing-md);
+        display: flex;
+        align-items: center;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+    }
+    
+    .entry-item.swiped .entry-actions {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ========== 底部预算区 ========== */
+.budget-section {
+    padding: var(--spacing-md);
+    padding-bottom: var(--spacing-xl);
+}
+
+.budget-card {
+    background: var(--color-white);
+    border: 2px solid var(--color-light-blue);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.budget-card.over-budget {
+    background: var(--color-light-pink);
+    border-color: #FF6B6B;
+}
+
+.budget-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.budget-icon {
+    font-size: 24px;
+}
+
+.budget-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--color-dark-blue);
+}
+
+.budget-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.budget-item {
+    text-align: center;
+}
+
+.budget-label {
+    display: block;
+    font-size: 12px;
+    color: var(--color-light-gray);
+    margin-bottom: var(--spacing-xs);
+}
+
+.budget-value {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: var(--font-english);
+    color: var(--color-dark-blue);
+}
+
+.budget-progress {
+    height: 12px;
+    background: var(--color-light-blue);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: var(--spacing-md);
+}
+
+.budget-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-sky-blue) 0%, var(--color-gradient-blue) 100%);
+    border-radius: 6px;
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+.budget-progress-bar.over {
+    background: linear-gradient(90deg, #FF6B6B 0%, #FFB3BA 100%);
+}
+
+.btn-set-budget {
+    width: 100%;
+    background: var(--color-sky-blue);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 44px;
+}
+
+.btn-set-budget:hover {
+    background: var(--color-morandi-blue);
+    transform: translateY(-2px);
+}
+
+/* ========== 弹窗样式 ========== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-md);
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    border-bottom: 2px solid var(--color-light-blue);
+}
+
+.modal-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--color-dark-blue);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--color-light-gray);
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    min-width: 32px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.entry-form,
+.budget-form {
+    padding: var(--spacing-lg);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: var(--color-dark-blue);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+}
+
+.type-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.type-btn {
+    flex: 1;
+    padding: var(--spacing-md);
+    border: 2px solid var(--color-light-blue);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    color: var(--color-dark-blue);
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 44px;
+}
+
+.type-btn:hover {
+    background: var(--color-light-blue);
+}
+
+.type-btn.active {
+    background: var(--color-sky-blue);
+    color: var(--color-white);
+    border-color: var(--color-sky-blue);
+}
+
+.form-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.form-actions .btn-primary,
+.form-actions .btn-secondary {
+    flex: 1;
+}
+
+/* ========== 更多操作菜单 ========== */
+.more-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: var(--spacing-md);
+    background: var(--color-white);
+    border: 2px solid var(--color-light-blue);
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 150px;
+    overflow: hidden;
+}
+
+.more-menu.show {
+    display: block;
+    animation: slideUp 0.3s ease;
+}
+
+.more-menu-item {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-md);
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 14px;
+    color: var(--color-dark-blue);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 44px;
+}
+
+.more-menu-item:hover {
+    background: var(--color-light-blue);
+}
+

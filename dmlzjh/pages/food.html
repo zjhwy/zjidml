@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭美食小管家 - 家庭小账本</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/pages/food.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">🍽️</span>
+                    <h1 class="logo-title">家庭美食小管家</h1>
+                </div>
+                <button class="close-sidebar" id="closeSidebar">×</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="../index.html" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">首页</span>
+                </a>
+                <a href="food.html" class="nav-item active">
+                    <span class="nav-icon">🍽️</span>
+                    <span class="nav-text">家庭美食小管家</span>
+                </a>
+                <a href="accounting.html" class="nav-item">
+                    <span class="nav-icon">💰</span>
+                    <span class="nav-text">家庭记账</span>
+                </a>
+                <a href="diary.html" class="nav-item">
+                    <span class="nav-icon">📔</span>
+                    <span class="nav-text">我们的小日志</span>
+                </a>
+                <a href="games.html" class="nav-item">
+                    <span class="nav-icon">🎮</span>
+                    <span class="nav-text">情侣小游戏</span>
+                </a>
+                <a href="annual.html" class="nav-item">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">年度总结</span>
+                </a>
+                <a href="longdistance.html" class="nav-item">
+                    <span class="nav-icon">💕</span>
+                    <span class="nav-text">异地相思馆</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn-secondary" id="syncBtn">
+                    <span class="btn-icon">☁️</span>
+                    <span>同步数据</span>
+                </button>
+                <a href="settings.html" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">设置</span>
+                </a>
+            </div>
+        </aside>
+
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <main class="main-content">
+            <header class="top-header food-header">
+                <button class="menu-toggle" id="menuToggle">☰</button>
+                <div class="header-title-group">
+                    <span class="header-icon gentle-rotate">🍽️</span>
+                    <h2 class="page-title">家庭美食小管家</h2>
+                </div>
+                <button class="header-action" id="filterFoodBtn">⚙️</button>
+            </header>
+
+            <section class="food-core-section">
+                <div class="food-core-grid">
+                    <div class="food-core-card" id="favoriteDishesCard">
+                        <div class="core-icon">⭐</div>
+                        <h3>回做菜品</h3>
+                        <p>收藏家中最爱的菜</p>
+                        <button class="btn-primary">查看回做清单</button>
+                    </div>
+                    <div class="food-core-card" id="randomDishCard">
+                        <div class="core-icon">🎲</div>
+                        <h3>随机选菜</h3>
+                        <p>摇一摇决定晚餐</p>
+                        <button class="btn-primary" id="randomDishBtn">点击随机</button>
+                    </div>
+                    <div class="food-core-card" id="ingredientRecommendCard">
+                        <div class="core-icon">🧺</div>
+                        <h3>食材推荐</h3>
+                        <p>根据现有食材推荐菜品</p>
+                        <button class="btn-primary" id="addIngredientBtn">录入食材</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dish-list-section">
+                <div class="section-header">
+                    <h3 class="section-title">菜品展示</h3>
+                    <div class="dish-toolbar-right">
+                        <!-- 推荐菜品按钮 -->
+                        <button class="btn-primary" id="recommendBtn">推荐菜品</button>
+                        <button class="btn-secondary" id="printMenuBtn">打印菜单</button>
+                    </div>
+                </div>
+
+                <!-- 推荐筛选条件 -->
+                <div class="recommend-filters" id="recommendFilters">
+                    <div class="filter-group">
+                        <label>烹饪时间</label>
+                        <select id="filterTime" class="input">
+                            <option value="all">不限</option>
+                            <option value="short">15 分钟内</option>
+                            <option value="medium">15 - 30 分钟</option>
+                            <option value="long">30 分钟以上</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>难度</label>
+                        <select id="filterDifficulty" class="input">
+                            <option value="all">不限</option>
+                            <option value="easy">简单</option>
+                            <option value="medium">中等</option>
+                            <option value="hard">复杂</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>菜系</label>
+                        <select id="filterCuisine" class="input">
+                            <option value="all">不限</option>
+                            <option value="川菜">川菜</option>
+                            <option value="粤菜">粤菜</option>
+                            <option value="鲁菜">鲁菜</option>
+                            <option value="豫菜">豫菜</option>
+                            <option value="家常菜">家常菜</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="dish-grid" id="dishGrid">
+                    <!-- 菜品卡片由JS生成 -->
+                </div>
+            </section>
+
+            <section class="ingredient-section">
+                <div class="ingredient-header">
+                    <h3 class="section-title">食材管理</h3>
+                    <button class="btn-primary" id="recordIngredientBtn">+ 录入食材</button>
+                </div>
+                <!-- 食材库存列表 -->
+                <div class="ingredient-tags" id="ingredientTags">
+                    <!-- 食材标签由JS生成 -->
+                </div>
+            </section>
+
+            <!-- 采购清单区 -->
+            <section class="purchase-section">
+                <div class="purchase-header">
+                    <h3 class="section-title">采购清单</h3>
+                    <div class="purchase-actions">
+                        <button class="btn-secondary" id="exportPurchaseTextBtn">导出为文本</button>
+                    </div>
+                </div>
+                <div class="purchase-list" id="purchaseList">
+                    <!-- 采购清单条目由JS生成 -->
+                </div>
+            </section>
+
+            <section class="recommend-section">
+                <div class="recommend-header">
+                    <div>
+                        <h3 class="section-title">推荐结果</h3>
+                        <p class="section-subtitle">基于现有食材推荐</p>
+                    </div>
+                </div>
+                <div class="recommend-list" id="recommendList">
+                    <!-- 推荐菜品由JS生成 -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 食材录入/编辑弹窗 -->
+    <div class="modal" id="ingredientModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="ingredientModalTitle">录入食材</h3>
+                <button class="modal-close" id="closeIngredientModal">×</button>
+            </div>
+            <form class="ingredient-form" id="ingredientForm">
+                <div class="form-group">
+                    <label>食材名称</label>
+                    <input type="text" class="input" id="ingredientName" required placeholder="如：土豆、番茄">
+                </div>
+                <div class="form-group">
+                    <label>数量与单位</label>
+                    <div class="inline-inputs">
+                        <input type="number" class="input" id="ingredientQuantity" min="0" step="0.1" placeholder="数量">
+                        <input type="text" class="input" id="ingredientUnit" placeholder="如：个、斤、袋">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>新鲜度</label>
+                    <select class="input" id="ingredientFreshness">
+                        <option value="fresh">新鲜</option>
+                        <option value="normal">一般</option>
+                        <option value="expire_soon">临期</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>储存方式</label>
+                    <input type="text" class="input" id="ingredientStorage" placeholder="如：冷藏、冷冻、阴凉干燥处">
+                </div>
+                <div class="form-group">
+                    <label>采购日期</label>
+                    <input type="date" class="input" id="ingredientPurchaseDate">
+                </div>
+                <div class="form-group">
+                    <label>库存预警阈值（低于此数量时提示补货）</label>
+                    <input type="number" class="input" id="ingredientThreshold" min="0" step="0.1" placeholder="如：1">
+                </div>
+                <div class="form-group">
+                    <label>食材图片</label>
+                    <input type="file" id="ingredientImage" accept="image/*">
+                    <div class="image-edit-row">
+                        <div class="image-preview" id="ingredientImagePreview">暂无图片</div>
+                        <div class="image-tools">
+                            <label>亮度调整</label>
+                            <input type="range" id="ingredientBrightness" min="80" max="130" value="100">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelIngredientBtn">取消</button>
+                    <button type="submit" class="btn-primary">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/pages/food.js"></script>
+</body>
+</html>
+

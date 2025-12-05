@@ -1,0 +1,110 @@
+/**
+ * 异地相思馆样式
+ */
+
+.longdistance-header {
+    background: linear-gradient(135deg, #B8C5FF, #E6D5FF);
+}
+
+.countdown-card {
+    background: linear-gradient(135deg, #E6F3FF, #FFE6F2);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    text-align: center;
+    margin: var(--spacing-md);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.countdown-value {
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: var(--spacing-sm);
+}
+
+.longdistance-core {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+}
+
+@media (max-width: 767px) {
+    .longdistance-core {
+        grid-template-columns: 1fr;
+    }
+}
+
+.checkin-card,
+.todo-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    border: 2px solid var(--color-light-blue);
+}
+
+.checkin-status {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.checkin-item {
+    flex: 1;
+    text-align: center;
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin: var(--spacing-md) 0;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    background: var(--color-light-blue);
+}
+
+.message-section,
+.gallery-section {
+    padding: var(--spacing-md);
+}
+
+.message-input {
+    min-height: 120px;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+.message-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.message-item {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    border: 2px solid var(--color-light-blue);
+}
+
+.gallery-carousel {
+    display: flex;
+    gap: var(--spacing-md);
+    overflow-x: auto;
+    padding-bottom: var(--spacing-sm);
+}
+
+.gallery-card {
+    min-width: 200px;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-light-blue);
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+

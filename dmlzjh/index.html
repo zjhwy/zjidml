@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭小账本 - 我们的小回忆</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏导航（电脑端固定，手机端抽屉式） -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">💰</span>
+                    <h1 class="logo-title">家庭小账本</h1>
+                </div>
+                <button class="close-sidebar" id="closeSidebar">×</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="index.html" class="nav-item active">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">首页</span>
+                </a>
+                <a href="pages/accounting.html" class="nav-item">
+                    <span class="nav-icon">💰</span>
+                    <span class="nav-text">家庭记账</span>
+                </a>
+                <a href="pages/diary.html" class="nav-item">
+                    <span class="nav-icon">📔</span>
+                    <span class="nav-text">我们的小日志</span>
+                </a>
+                <a href="pages/games.html" class="nav-item">
+                    <span class="nav-icon">🎮</span>
+                    <span class="nav-text">情侣小游戏</span>
+                </a>
+                <a href="pages/gallery.html" class="nav-item">
+                    <span class="nav-icon">📷</span>
+                    <span class="nav-text">家庭相册</span>
+                </a>
+                <a href="pages/food.html" class="nav-item">
+                    <span class="nav-icon">🍽️</span>
+                    <span class="nav-text">家庭美食小管家</span>
+                </a>
+                <a href="pages/annual.html" class="nav-item">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">年度总结</span>
+                </a>
+                <a href="pages/long distance.html" class="nav-item">
+                    <span class="nav-icon">💕</span>
+                    <span class="nav-text">异地相思馆</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn-secondary" id="syncBtn">
+                    <span class="btn-icon">☁️</span>
+                    <span>同步数据</span>
+                </button>
+                <a href="pages/settings.html" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">设置</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- 遮罩层（手机端侧边栏打开时显示） -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 顶部导航栏 -->
+            <header class="top-header">
+                <button class="menu-toggle" id="menuToggle" aria-label="打开侧边菜单">☰</button>
+                <h2 class="page-title">首页</h2>
+                <button class="header-action" id="searchBtn" aria-label="搜索">🔍</button>
+            </header>
+
+            <!-- 首页内容 -->
+            <div class="home-content">
+                <div class="welcome-card">
+                    <div class="welcome-illustration">💑</div>
+                    <h2 class="welcome-title">欢迎回来～</h2>
+                    <p class="welcome-text">记录我们的每一个美好瞬间</p>
+                </div>
+
+                <div class="quick-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <div class="stat-label">本月支出</div>
+                            <div class="stat-value" id="monthExpense">¥0</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📔</div>
+                        <div class="stat-info">
+                            <div class="stat-label">日志篇数</div>
+                            <div class="stat-value" id="diaryCount">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📷</div>
+                        <div class="stat-info">
+                            <div class="stat-label">照片总数</div>
+                            <div class="stat-value" id="photoCount">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <a href="pages/accounting.html" class="action-card">
+                        <div class="action-icon">💰</div>
+                        <div class="action-text">记账</div>
+                    </a>
+                    <a href="pages/diary.html" class="action-card">
+                        <div class="action-icon">📔</div>
+                        <div class="action-text">写日志</div>
+                    </a>
+                    <a href="pages/games.html" class="action-card">
+                        <div class="action-icon">🎮</div>
+                        <div class="action-text">小游戏</div>
+                    </a>
+                    <a href="pages/food.html" class="action-card">
+                        <div class="action-icon">🍽️</div>
+                        <div class="action-text">选菜</div>
+                    </a>
+                    <a href="pages/long distance.html" class="action-card">
+                        <div class="action-icon">💕</div>
+                        <div class="action-text">异地相思</div>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 加载动画 -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-animation">
+            <div class="loading-bear">🐻</div>
+            <div class="loading-stars">
+                <span>⭐</span><span>⭐</span><span>⭐</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+

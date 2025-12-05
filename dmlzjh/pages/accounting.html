@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭记账 - 家庭小账本</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/pages/accounting.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏导航 -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">💰</span>
+                    <h1 class="logo-title">家庭小账本</h1>
+                </div>
+                <button class="close-sidebar" id="closeSidebar">×</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="../index.html" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-text">首页</span>
+                </a>
+                <a href="accounting.html" class="nav-item active">
+                    <span class="nav-icon">💰</span>
+                    <span class="nav-text">家庭记账</span>
+                </a>
+                <a href="diary.html" class="nav-item">
+                    <span class="nav-icon">📔</span>
+                    <span class="nav-text">我们的小日志</span>
+                </a>
+                <a href="games.html" class="nav-item">
+                    <span class="nav-icon">🎮</span>
+                    <span class="nav-text">情侣小游戏</span>
+                </a>
+                <a href="food.html" class="nav-item">
+                    <span class="nav-icon">🍽️</span>
+                    <span class="nav-text">家庭美食小管家</span>
+                </a>
+                <a href="annual.html" class="nav-item">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">年度总结</span>
+                </a>
+                <a href="longdistance.html" class="nav-item">
+                    <span class="nav-icon">💕</span>
+                    <span class="nav-text">异地相思馆</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn-secondary" id="syncBtn">
+                    <span class="btn-icon">☁️</span>
+                    <span>同步数据</span>
+                </button>
+                <a href="settings.html" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">设置</span>
+                </a>
+            </div>
+        </aside>
+
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 标题栏 -->
+            <header class="top-header accounting-header">
+                <button class="menu-toggle" id="menuToggle" aria-label="打开侧边菜单">☰</button>
+                <div class="header-title-group">
+                    <span class="header-icon">💰</span>
+                    <h2 class="page-title">家庭小账本</h2>
+                </div>
+                <button class="header-action" id="moreBtn" aria-label="更多操作">⋯</button>
+            </header>
+
+            <!-- 快捷录入区 -->
+            <section class="quick-entry-section">
+                <button class="btn-add-entry" id="addEntryBtn" aria-label="新增一条收支记录">
+                    <span class="btn-add-icon">+</span>
+                    <span>新增收支</span>
+                </button>
+                <div class="quick-buttons">
+                    <button class="quick-btn" data-category="奶茶" aria-label="快速记一笔奶茶支出">🧋 奶茶</button>
+                    <button class="quick-btn" data-category="电影" aria-label="快速记一笔电影支出">🎬 电影</button>
+                    <button class="quick-btn" data-category="餐饮" aria-label="快速记一笔餐饮支出">🍔 餐饮</button>
+                    <button class="quick-btn" data-category="交通" aria-label="快速记一笔交通支出">🚗 交通</button>
+                    <button class="quick-btn" data-category="购物" aria-label="快速记一笔购物支出">🛍️ 购物</button>
+                </div>
+            </section>
+
+            <!-- 统计视图区 -->
+            <section class="stats-section">
+                <div class="stats-container">
+                    <!-- 收支饼图（电脑端左侧/手机端上方） -->
+                    <div class="chart-container">
+                        <h3 class="section-title">收支统计</h3>
+                        <canvas id="accountChart"></canvas>
+                    </div>
+                    
+                    <!-- 月度收支明细卡片（电脑端右侧/手机端下方） -->
+                    <div class="monthly-stats-card">
+                        <h3 class="section-title">本月明细</h3>
+                        <div class="monthly-stats">
+                            <div class="monthly-stat-item">
+                                <div class="stat-label">收入</div>
+                                <div class="stat-value income" id="monthIncome">¥0.00</div>
+                            </div>
+                            <div class="monthly-stat-item">
+                                <div class="stat-label">支出</div>
+                                <div class="stat-value expense" id="monthExpense">¥0.00</div>
+                            </div>
+                            <div class="monthly-stat-item">
+                                <div class="stat-label">结余</div>
+                                <div class="stat-value balance" id="monthBalance">¥0.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 收支明细区 -->
+            <section class="entries-section">
+                <div class="section-header">
+                    <h3 class="section-title">收支明细</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all" aria-pressed="true">全部</button>
+                        <button class="filter-btn" data-filter="income" aria-pressed="false">收入</button>
+                        <button class="filter-btn" data-filter="expense" aria-pressed="false">支出</button>
+                    </div>
+                </div>
+                <div class="entries-list" id="entriesList">
+                    <!-- 收支记录列表将在这里动态生成 -->
+                </div>
+            </section>
+
+            <!-- 底部预算区 -->
+            <section class="budget-section">
+                <div class="budget-card" id="budgetCard">
+                    <div class="budget-header">
+                        <span class="budget-icon">💳</span>
+                        <h3 class="budget-title">本月预算</h3>
+                    </div>
+                    <div class="budget-info">
+                        <div class="budget-item">
+                            <span class="budget-label">预算金额</span>
+                            <span class="budget-value" id="budgetAmount">¥0.00</span>
+                        </div>
+                        <div class="budget-item">
+                            <span class="budget-label">已支出</span>
+                            <span class="budget-value" id="budgetSpent">¥0.00</span>
+                        </div>
+                        <div class="budget-item">
+                            <span class="budget-label">剩余</span>
+                            <span class="budget-value" id="budgetRemaining">¥0.00</span>
+                        </div>
+                    </div>
+                    <div class="budget-progress">
+                        <div class="budget-progress-bar" id="budgetProgressBar"></div>
+                    </div>
+                    <button class="btn-set-budget" id="setBudgetBtn">设置预算</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- 新增收支弹窗 -->
+    <div class="modal" id="entryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="entryModalTitle">新增收支</h3>
+                <button class="modal-close" id="closeModal" aria-label="关闭新增收支弹窗">×</button>
+            </div>
+            <form class="entry-form" id="entryForm" aria-labelledby="entryModalTitle">
+                <div class="form-group">
+                    <label id="entryTypeLabel">类型</label>
+                    <div class="type-buttons">
+                        <button type="button" class="type-btn active" data-type="expense" aria-pressed="true" aria-labelledby="entryTypeLabel">支出</button>
+                        <button type="button" class="type-btn" data-type="income" aria-pressed="false" aria-labelledby="entryTypeLabel">收入</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>金额</label>
+                    <input type="number" class="input" id="entryAmount" placeholder="0.00" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label>分类</label>
+                    <input type="text" class="input" id="entryCategory" placeholder="如：餐饮、交通等" required>
+                </div>
+                <div class="form-group">
+                    <label>备注</label>
+                    <textarea class="input" id="entryNote" rows="3" placeholder="可选"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>日期</label>
+                    <input type="date" class="input" id="entryDate" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelBtn">取消</button>
+                    <button type="submit" class="btn-primary">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 设置预算弹窗 -->
+    <div class="modal" id="budgetModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">设置预算</h3>
+                <button class="modal-close" id="closeBudgetModal">×</button>
+            </div>
+            <form class="budget-form" id="budgetForm">
+                <div class="form-group">
+                    <label>本月预算金额</label>
+                    <input type="number" class="input" id="budgetInput" placeholder="0.00" step="0.01" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelBudgetBtn">取消</button>
+                    <button type="submit" class="btn-primary">保存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 更多操作菜单 -->
+    <div class="more-menu" id="moreMenu">
+        <button class="more-menu-item" id="exportBtn">📤 导出数据</button>
+        <button class="more-menu-item" id="backupBtn">💾 备份数据</button>
+        <button class="more-menu-item" id="filterBtn">🔍 筛选</button>
+    </div>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/pages/accounting.js"></script>
+</body>
+</html>
+
